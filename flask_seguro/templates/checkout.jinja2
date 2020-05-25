@@ -1,0 +1,73 @@
+{% extends 'base.jinja2' %}
+
+{% block title %}Pagamento{% endblock %}
+
+{% block subcontent %}
+    <form class="form-horizonal" role="form" method="POST">
+        <div class="form-group">
+            <label for="InputEmail">Email</label>
+            <input type="email" class="form-control" id="InputEmail" placeholder="Email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="InputName">Nome</label>
+            <input type="text" class="form-control" id="InputName" placeholder="Nome" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="InputPostalCode">CEP</label>
+            <input type="text" class="form-control" id="InputPostalCode" placeholder="CEP" name="postal_code" maxlength="8" required>
+        </div>
+        <div class="form-group">
+            <label for="InputStreet">Rua</label>
+            <input type="text" class="form-control" id="InputStreet" placeholder="Rua" name="street" readonly>
+        </div>
+        <div class="form-group">
+            <label for="InputNumber">Número</label>
+            <input type="number" class="form-control" id="InputNumber" placeholder="Número" name="number" required>
+        </div>
+        <div class="form-group">
+            <label for="InputComplement">*Complemento</label>
+            <input type="text" class="form-control" id="InputComplement" placeholder="Complemento" name="complement" >
+        </div>
+        <div class="form-group">
+            <label for="InputDistrict">Bairro</label>
+            <input type="text" class="form-control" id="InputDistrict" placeholder="Bairro" name="district"  readonly>
+        </div>
+        <div class="form-group">
+            <label for="InputCity">Cidade</label>
+            <input type="text" class="form-control" id="InputCity" placeholder="Cidade" name="city"  readonly>
+        </div>
+        <div class="form-group">
+            <label for="InputState">Estado</label>
+            <input type="text" class="form-control" id="InputState" placeholder="Estado" name="state"  readonly>
+        </div>
+        <button type="submit" onclick="response = pg.checkout()" class="btn btn-lg btn-primary">Pagar</button>
+<script>
+	(function() {
+        const cepInput = document.querySelector("#InputPostalCode");
+        const ruaInput = document.querySelector("#InputStreet");
+        const bairroInput = document.querySelector("#InputDistrict");
+        const ufInput = document.querySelector("#InputState");
+		const localidadeInput = document.querySelector("#InputCity")
+
+							
+		cepInput.oninput = async () => {
+		  if (cepInput.value.length != 8) return;
+		
+		  const response = await fetch(
+			`https://viacep.com.br/ws/${cepInput.value}/json/`
+		  );
+		  const data = await response.json();
+		  const { logradouro, bairro, uf, cep, localidade} = data;
+		  cepInput.value = cep;
+		  ruaInput.value = logradouro;
+		  bairroInput.value = bairro;
+		  ufInput.value = uf;
+		  localidadeInput.value = localidade;
+		};
+	})();
+		
+</script> 
+
+    </form>
+
+{% endblock %}

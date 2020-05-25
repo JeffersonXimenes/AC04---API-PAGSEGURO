@@ -1,0 +1,32 @@
+<html>
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/realizado.css') }}">    
+
+
+
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block navbar %}
+  {% include 'menu.jinja2' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row products">
+            <h1>{{ self.title() }}</h1>
+            {% block subcontent %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+<html>
