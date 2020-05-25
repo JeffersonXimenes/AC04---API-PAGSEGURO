@@ -4,12 +4,12 @@ Exemplo do python-pagseguro utilizando Flask.
 
 Integrantes Grupo
 ==========
-Anderson Taborga - RA:1801922
-Anna Veloso - RA: 1801230
-Gabriel Bezerra - RA:1801171
-Hellen Barbosa - RA: 1801219
-Jefferson Ximenes - RA: 1801158
-João Nunes - RA: 1801142
+- Anderson Taborga - RA:1801922
+- Anna Veloso - RA: 1801230
+- Gabriel Bezerra - RA:1801171
+- Hellen Barbosa - RA: 1801219
+- Jefferson Ximenes - RA: 1801158
+- João Nunes - RA: 1801142
 
 Instalação
 ==========
